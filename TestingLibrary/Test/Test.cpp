@@ -34,6 +34,24 @@ bool runSuiteTests(const char* testSuite) {
 	return allTestsPassed;
 }
 
+bool runTestCase(const char* testSuite, const char* testCase) {
+	TestCase* c = getTestRegister().getTestCase(testSuite, testCase);
+	if (!c) {
+		setConsoleColour(ConsoleColour::Red);
+		log("[ERROR] Test Suite %s does not contain Test Case %s does not exist\n\n",
+			testSuite, testCase);
+		setConsoleColour(ConsoleColour::Default);
+
+		allTestsPassed = false;
+		return false;
+	}
+
+	allTestsPassed &= c->run();
+	log("\n");
+
+	return allTestsPassed;
+}
+
 bool runTestCase(const char* testCase) {
 	TestCase* c = getTestRegister().getTestCase(testCase);
 	if (!c) {

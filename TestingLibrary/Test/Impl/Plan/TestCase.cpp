@@ -33,15 +33,6 @@ bool TestCase::run() const {
         resetConsoleColour();
 
         return false;
-    } catch (...) {
-        auto duration = timer.getTimePassedMs();
-
-        setConsoleColour(ConsoleColour::Red);
-        logTabbed("[TEST CASE] %s failed with an unexpected exception (%ums)\n", 
-                  name, duration);
-        resetConsoleColour();
-
-        return false;
     }
 }
 
