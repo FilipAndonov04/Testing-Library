@@ -4,9 +4,9 @@ Library for testing code with simple interface.
 
 ## Testing
 
-Testing is done with test cases. <br>
-Test cases have a suite, by which they are grouped, and a name. <br>
-They are automatically registered. <br>
+Testing is done with test cases. 
+Test cases have a suite, by which they are grouped, and a name. 
+They are automatically registered. 
 
 ```
 TEST_CASE(suit, name) {
@@ -16,8 +16,8 @@ TEST_CASE(suit, name) {
 
 ## Asserts
 
-Asserts are used to validate the test case. <br>
-If any assert fails, the test stops execution at that point and fails. <br>
+Asserts are used to validate the test case. 
+If any assert fails, the test stops execution at that point and fails. 
 
 ```
 ASSERT_TRUE(condition, msg);
@@ -31,30 +31,34 @@ ASSERT_ITERABLE_EQUAL(first1, last1, first2, msg);
 
 ## Entry Point
 
-The entry point of the test client program is the function `TEST_MAIN()`. <br>
-In it the client can specify which tests to run. <br>
-It can be skipped if the file `Test/EntryPoint.h` is included, in which case all tests will be run. <br>
+The entry point of the test client program is the function `TEST_MAIN()`. 
+In it the client can specify which tests to run. 
+It can be skipped if the file `Test/EntryPoint.h` is included, in which case all tests will be run. 
 
-Functions for running the tests: <br>
+Functions for running the tests:
 ```
 bool Test::runAllTests();
 bool Test::runSuiteTests(const char* testSuite);
 bool Test::runTestCase(const char* testCase);
 ```
 
-The success of all run tests up to this moment in time can be checked with `Test::haveAllTestsPassed()`. <br>
+The success of all run tests up to this moment in time can be checked with `Test::haveAllTestsPassed()`.
 
 ## Testing Result
 
-The testing results are printed in the console. <br>
-They consist of success of cases and suites and their time duration. <br>
-On test case failure the following things are shown: the assertion message, the filename and line and the expected value, if there was any. <br>
-If an exception is thrown, its error message and the filename and line will be shown. <br>
-The program returns 0 if all tests pass and 1 otherwise.
+The testing results are printed in the console. 
+They consist of success of cases and suites and their time duration. 
+On test case failure the following things are shown: the assertion message, the filename and line and the expected value, if there was any. 
+If an exception is thrown, its error message and the filename and line will be shown. 
+The program returns 0 if all tests pass and 1 otherwise. 
 
-## Examples
+Screenshot of test results:
 
-An example test program:<br>
+![Screenshot of test results](/example-images/testing-results-example.png)
+
+## Example Client Program
+
+A simple test program: 
 ```
 #include <Test/Test.h>
 #include <Test/Asserts.h>
