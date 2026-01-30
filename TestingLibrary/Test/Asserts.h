@@ -30,8 +30,8 @@ std::string toString(T&& t);
 		auto&& _actual = (actual); \
 		auto&& _msg = (msg); \
 		if (!(_expected == _actual)) { \
-			throw Test::TestFailedException("Expected: \'" + Test::toString(_expected) + \
-											"\', Actual: \'" + Test::toString(_actual) + "\', " + _msg , \
+			throw Test::TestFailedException("Expected: " + Test::toString(_expected) + \
+											", Actual: " + Test::toString(_actual) + ", " + _msg , \
 											__FILE__, __LINE__); \
 		} \
 	} while (false)
@@ -42,8 +42,8 @@ std::string toString(T&& t);
 		auto&& _actual = (actual); \
 		auto&& _msg = (msg); \
 		if (_expected == _actual) { \
-			throw Test::TestFailedException("Expected: \'" + Test::toString(_expected) + \
-											"\', Actual: \'" + Test::toString(_actual) + "\', " + _msg , \
+			throw Test::TestFailedException("Expected: " + Test::toString(_expected) + \
+											", Actual: " + Test::toString(_actual) + ", " + _msg , \
 											__FILE__, __LINE__); \
 		} \
 	} while (false)

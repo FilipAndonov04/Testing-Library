@@ -28,8 +28,8 @@ bool TestCase::run() const {
         auto duration = timer.getTimePassedMs();
 
         setConsoleColour(ConsoleColour::Red);
-        logTabbed("[TEST CASE] %s (%s:%i) failed: %s (%ums)\n", 
-                  name, e.getFile(), e.getLine(), e.what(), duration);
+        logTabbed("[TEST CASE] %s (%s:%i) failed (%ums): %s\n", 
+                  name, e.getFile(), e.getLine(), duration, e.what());
         resetConsoleColour();
 
         return false;

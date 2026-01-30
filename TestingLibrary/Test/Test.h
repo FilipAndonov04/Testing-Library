@@ -12,7 +12,7 @@ namespace Test {
 		} catch (const Test::TestFailedException& e) { \
 			throw; \
 		} catch (const std::exception& e) { \
-			throw Test::TestFailedException(std::string("an unexpected exception occurred, ") + e.what(), __FILE__, __LINE__); \
+			throw Test::TestFailedException(std::string("an unexpected exception occurred - ") + e.what(), __FILE__, __LINE__); \
 		} catch (...) { \
 			throw Test::TestFailedException("an unexpected exception occurred", __FILE__, __LINE__); \
 		} \

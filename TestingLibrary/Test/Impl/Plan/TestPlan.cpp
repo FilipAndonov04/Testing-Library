@@ -59,7 +59,7 @@ unsigned TestPlan::totalTests() const {
 }
 
 unsigned TestPlan::runTests() const {
-    logTabbed("[ALL TESTS] are running\n");
+    logTabbed("[ALL TESTS] tests are running\n");
 
     incrementLogTabs();
     TestTimer timer;
@@ -69,8 +69,8 @@ unsigned TestPlan::runTests() const {
 
     unsigned total = totalTests();
     setConsoleColour(passed == total ? ConsoleColour::Green : ConsoleColour::Red);
-    logTabbed("[ALL TESTS] results: passed %u/%u and failed %u/%u (%ums)\n", 
-              passed, total, total - passed, total, duration);
+    logTabbed("[ALL TESTS] tests passed %u/%u (%ums)\n", 
+              passed, total, duration);
     setConsoleColour(ConsoleColour::Default);
 
     return passed;

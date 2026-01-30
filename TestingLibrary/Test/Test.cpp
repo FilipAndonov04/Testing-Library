@@ -19,7 +19,7 @@ bool runSuiteTests(const char* testSuite) {
 	TestSuite* s = getTestRegister().getTestSuite(testSuite);
 	if (!s) {
 		setConsoleColour(ConsoleColour::Red);
-		log("[ERROR] Test Suite %s does not exist\n\n", testSuite);
+		log("[ERROR] test suite %s does not exist\n\n", testSuite);
 		setConsoleColour(ConsoleColour::Default);
 
 		allTestsPassed = false;
@@ -38,7 +38,7 @@ bool runTestCase(const char* testSuite, const char* testCase) {
 	TestCase* c = getTestRegister().getTestCase(testSuite, testCase);
 	if (!c) {
 		setConsoleColour(ConsoleColour::Red);
-		log("[ERROR] Test Suite %s does not contain Test Case %s does not exist\n\n",
+		log("[ERROR] test suite %s does not contain test case %s\n\n",
 			testSuite, testCase);
 		setConsoleColour(ConsoleColour::Default);
 
@@ -56,7 +56,7 @@ bool runTestCase(const char* testCase) {
 	TestCase* c = getTestRegister().getTestCase(testCase);
 	if (!c) {
 		setConsoleColour(ConsoleColour::Red);
-		log("[ERROR] Test Case %s does not exist\n\n", testCase);
+		log("[ERROR] test case %s does not exist\n\n", testCase);
 		setConsoleColour(ConsoleColour::Default);
 
 		allTestsPassed = false;

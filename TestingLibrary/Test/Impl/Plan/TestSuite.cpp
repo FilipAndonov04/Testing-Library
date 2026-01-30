@@ -31,7 +31,7 @@ void TestSuite::addTestCase(TestCase testCase) {
 }
 
 unsigned TestSuite::runTests() const {
-    logTabbed("[TEST SUITE] %s is running\n", name);
+    logTabbed("[TEST SUITE] %s tests are running\n", name);
 
     incrementLogTabs();
     TestTimer timer;
@@ -41,7 +41,7 @@ unsigned TestSuite::runTests() const {
 
     unsigned total = totalTests();
     setConsoleColour(passed == total ? ConsoleColour::Green : ConsoleColour::Red);
-    logTabbed("[TEST SUITE] %s: tests passed %u/%u (%ums)\n", 
+    logTabbed("[TEST SUITE] %s tests passed %u/%u (%ums)\n", 
               name, passed, total, duration);
     setConsoleColour(ConsoleColour::Default);
 
