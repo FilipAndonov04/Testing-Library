@@ -1,7 +1,5 @@
-#include "Test/EntryPoint.h"
 #include "Test/Test.h"
 #include "Test/Asserts.h"
-#include "Test/EntryPoint.h"
 
 TEST_CASE(Ptr, NotNull) {
 	int* ptr = nullptr;
@@ -15,4 +13,10 @@ TEST_CASE(Ptr, Null) {
 	ASSERT_NOT_NULL(ptr, "ptr must not be null");
 
 	delete ptr;
+}
+
+TEST_MAIN() {
+	Test::runAllTests();
+	Test::runSuiteTests("Ptr");
+	Test::runTestCase("NotNull");
 }
