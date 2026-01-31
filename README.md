@@ -27,7 +27,7 @@ ASSERT_EQUAL(expected, actual, msg);
 ASSERT_NOT_EQUAL(expected, actual, msg);
 ASSERT_NULL(ptr, msg);
 ASSERT_NOT_NULL(ptr, msg);
-ASSERT_ITERABLE_EQUAL(first1, last1, first2, msg);
+ASSERT_ITERABLE_EQUAL(first1, last1, first2, last2, msg);
 ```
 
 ## Entry Point
