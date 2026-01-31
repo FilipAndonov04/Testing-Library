@@ -1,4 +1,4 @@
-# TestingLibrary
+# Testing Library
 
 Library for testing code with simple interface.
 
