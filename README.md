@@ -10,7 +10,7 @@ Suites are used to group test cases.
 Test cases are automatically registered on definition. 
 
 ```
-TEST_CASE(suit, name) {
+TEST_CASE(suite, name) {
     ...
 }
 ```
