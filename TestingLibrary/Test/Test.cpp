@@ -1,6 +1,7 @@
 #include "Test.h"
 #include "Logging/Log.hpp"
 #include "Impl/Plan/TestPlan.h"
+#include "Impl/Register/TestRegister.h"
 
 namespace Test {
 

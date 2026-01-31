@@ -1,14 +1,11 @@
 #include "TestRegistration.h"
+#include "Impl/Register/TestRegister.h"
+#include "Impl/Plan/TestPlan.h"
 
 namespace Test {
 
-TestPlan& getTestRegister() {
-    static TestPlan instance;
-    return instance;
-}
-
-TestRegistration::TestRegistration(const char* suite, TestCase testCase) {
-    getTestRegister().addTestCase(suite, std::move(testCase));
+TestRegistration::TestRegistration(const char* suiteName, const char* caseName, void(*caseImpl)()) {
+    getTestRegister().addTestCase(suiteName, TestCase{caseName, caseImpl});
 }
 
 }

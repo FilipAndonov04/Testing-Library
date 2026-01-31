@@ -39,6 +39,9 @@
     <ClCompile Include="Test\Impl\Register\TestRegistration.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Test\Impl\Register\TestRegister.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Test\Impl\Plan\TestSuite.h">
@@ -69,6 +72,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Test\Impl\Register\TestRegistration.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Test\Impl\Register\TestRegister.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
