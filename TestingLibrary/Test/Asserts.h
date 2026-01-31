@@ -12,7 +12,7 @@ namespace Test {
 #define ASSERT_NOT_EQUAL(expected, actual, msg) ASSERT_NOT_EQUAL_IMPL(expected, actual, msg)
 #define ASSERT_NULL(ptr, msg) ASSERT_TRUE((ptr) == nullptr, msg)
 #define ASSERT_NOT_NULL(ptr, msg) ASSERT_TRUE((ptr) != nullptr, msg)
-#define ASSERT_ITERABLE_EQUAL(first1, last1, first2, msg) ASSERT_ITERABLE_EQUAL_IMPL(first1, last1, first2, msg)
+#define ASSERT_ITERABLE_EQUAL(first1, last1, first2, last2, msg) ASSERT_ITERABLE_EQUAL_IMPL(first1, last1, first2, last2, msg)
 
 template <typename T>
 std::string toString(T&& t);
@@ -46,20 +46,28 @@ std::string toString(T&& t);
 		} \
 	} while (false)
 
-#define ASSERT_ITERABLE_EQUAL_IMPL(first1, last1, first2, msg) \
+#define ASSERT_ITERABLE_EQUAL_IMPL(first1, last1, first2, last2, msg) \
 	do { \
 		auto&& _first1 = (first1); \
 		auto&& _last1 = (last1); \
 		auto&& _first2 = (first2); \
+		auto&& _last2 = (last2); \
 		size_t _iteration = 0; \
-		while (_first1 != _last1) { \
+		while (_first1 != _last1 && _first2 != _last2) { \
 			if (!(*_first1 == *_first2)) { \
-				throw Test::TestFailedException("missmatch at " + std::to_string(_iteration) \
-												+ "th iteration, " + (msg), __FILE__, __LINE__); \
+				throw Test::TestFailedException("missmatch at " + std::to_string(_iteration) + \
+												"th iteration, " + (msg), __FILE__, __LINE__); \
 			} \
 			++_first1; \
 			++_first2; \
 			++_iteration; \
+		} \
+		if (_first1 != _last1) { \
+			throw Test::TestFailedException(std::string("first collection has more elements, ") + \
+											(msg), __FILE__, __LINE__); \
+		} else if (_first2 != _last2) { \
+			throw Test::TestFailedException(std::string("first collection has less elements, ") + \
+											(msg), __FILE__, __LINE__); \
 		} \
 	} while (false)
 

@@ -40,7 +40,7 @@ TEST_CASE(Vector, Palindrome) {
 		v[v.size() - 1 - i] = i;
 	}
 
-	ASSERT_ITERABLE_EQUAL(v.begin(), v.end(), v.rbegin(), "they are palindorme");
+	ASSERT_ITERABLE_EQUAL(v.begin(), v.end(), v.rbegin(), v.rend(), "they are palindorme");
 }
 
 TEST_CASE(Vector, NotPalindrome) {
@@ -49,5 +49,5 @@ TEST_CASE(Vector, NotPalindrome) {
 		v[i] = i;
 	}
 
-	ASSERT_ITERABLE_EQUAL(v.begin(), v.end(), v.rbegin(), "they are not palindromes");
+	ASSERT_ITERABLE_EQUAL(v.begin(), v.end(), v.rbegin(), v.rend(), "they are not palindromes");
 }
