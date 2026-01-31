@@ -5,8 +5,6 @@
 namespace Test {
 
 void TestPlan::addTestCase(const char* suiteName, TestCase testCase) {
-    std::lock_guard<std::mutex> lock{mutex};
-    
     for (auto& suite : suites) {
         if (suite.getName() == suiteName) {
             suite.addTestCase(std::move(testCase));

@@ -1,8 +1,6 @@
 #pragma once
 #include "Impl/Plan/TestSuite.h"
 
-#include <mutex>
-
 namespace Test {
 
 class TestPlan {
@@ -21,7 +19,6 @@ private:
 	unsigned runTestsImpl() const;
 
 	std::vector<TestSuite> suites;
-	std::mutex mutex;
 };
 
 }
