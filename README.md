@@ -5,8 +5,9 @@ Library for testing code with simple interface.
 ## Testing
 
 Testing is done with test cases. 
-Test cases have a suite, by which they are grouped, and a name. 
-They are automatically registered. 
+A test case has a name and a suite.
+Suites are used to group test cases.
+Test cases are automatically registered on definition. 
 
 ```
 TEST_CASE(suit, name) {
