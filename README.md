@@ -43,7 +43,7 @@ bool Test::runTestCase(const char* testSuite, const char* testCase);
 bool Test::runTestCase(const char* testCase);
 ```
 
-The success of all run tests up to this moment in time can be checked with `Test::haveAllTestsPassed()`.
+The success of all run tests can be checked with `Test::haveAllTestsPassed()`.
 
 ## Testing Result
 
