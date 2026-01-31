@@ -51,7 +51,7 @@ The testing results are printed in the console.
 They consist of success of cases and suites and their time duration. 
 On test case failure the following things are shown: the assertion message, the filename and line and the expected value, if there was any. 
 If an exception is thrown, its error message and the filename and line will be shown. 
-The program returns 0 if all tests pass and 1 otherwise. 
+The program returns `0` if all tests pass, `1` otherwise. 
 
 Screenshot of test results:
 
