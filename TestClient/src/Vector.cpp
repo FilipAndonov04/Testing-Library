@@ -32,3 +32,22 @@ TEST_CASE(Vector, ElementsAvarage) {
 	double expected = (1 + v.size()) / 2.0;
 	ASSERT_EQUAL(expected, sum / v.size(), "avarage must be correct");
 }
+
+TEST_CASE(Vector, Palindrome) {
+	std::vector<int> v(15);
+	for (size_t i = 0; i < v.size() / 2; i++) {
+		v[i] = i;
+		v[v.size() - 1 - i] = i;
+	}
+
+	ASSERT_ITERABLE_EQUAL(v.begin(), v.end(), v.rbegin(), "they are palindorme");
+}
+
+TEST_CASE(Vector, NotPalindrome) {
+	std::vector<int> v(15);
+	for (size_t i = 0; i < v.size(); i++) {
+		v[i] = i;
+	}
+
+	ASSERT_ITERABLE_EQUAL(v.begin(), v.end(), v.rbegin(), "they are not palindromes");
+}

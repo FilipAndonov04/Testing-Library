@@ -28,10 +28,9 @@ std::string toString(T&& t);
 	do { \
 		auto&& _expected = (expected); \
 		auto&& _actual = (actual); \
-		auto&& _msg = (msg); \
 		if (!(_expected == _actual)) { \
 			throw Test::TestFailedException("Expected: " + Test::toString(_expected) + \
-											", Actual: " + Test::toString(_actual) + ", " + _msg , \
+											", Actual: " + Test::toString(_actual) + ", " + (msg) , \
 											__FILE__, __LINE__); \
 		} \
 	} while (false)
@@ -40,24 +39,29 @@ std::string toString(T&& t);
 	do { \
 		auto&& _expected = (expected); \
 		auto&& _actual = (actual); \
-		auto&& _msg = (msg); \
 		if (_expected == _actual) { \
 			throw Test::TestFailedException("Expected: " + Test::toString(_expected) + \
-											", Actual: " + Test::toString(_actual) + ", " + _msg , \
+											", Actual: " + Test::toString(_actual) + ", " + (msg) , \
 											__FILE__, __LINE__); \
 		} \
 	} while (false)
 
 #define ASSERT_ITERABLE_EQUAL_IMPL(first1, last1, first2, msg) \
-	auto&& _first1 = (first); \
-	auto&& _last1 = (_last1); \
-	auto&& _first2 = (first2); \
-	auto&& _msg = (msg); \
-	while (_first1 != _last1) { \
-		ASSERT_EQUAL(_first1, _first2, _msg); \
-		++_first1; \
-		++_first2; \
-	}
+	do { \
+		auto&& _first1 = (first1); \
+		auto&& _last1 = (last1); \
+		auto&& _first2 = (first2); \
+		size_t _iteration = 0; \
+		while (_first1 != _last1) { \
+			if (!(*_first1 == *_first2)) { \
+				throw Test::TestFailedException("missmatch at " + std::to_string(_iteration) \
+												+ "th iteration, " + (msg), __FILE__, __LINE__); \
+			} \
+			++_first1; \
+			++_first2; \
+			++_iteration; \
+		} \
+	} while (false)
 
 template <typename T>
 std::string toString(T&& t) {
