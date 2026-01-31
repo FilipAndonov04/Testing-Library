@@ -72,6 +72,6 @@ A simple test program:
 TEST_CASE(Box, DefaultConstructor) {
     Box box;
 
-    ASSERT_TRUE(box.isEmpty(), "Box should be empty on construction");
+    ASSERT_TRUE(box.isEmpty(), "box should be empty on construction");
 }
 ```
