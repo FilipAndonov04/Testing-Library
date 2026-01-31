@@ -39,6 +39,7 @@ Functions for running the tests:
 ```
 bool Test::runAllTests();
 bool Test::runSuiteTests(const char* testSuite);
+bool Test::runTestCase(const char* testSuite, const char* testCase);
 bool Test::runTestCase(const char* testCase);
 ```
 
