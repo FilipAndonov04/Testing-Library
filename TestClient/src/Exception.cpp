@@ -14,6 +14,10 @@ TEST_CASE(FuncGood, Throw) {
 	ASSERT_THROW(std::exception, goodFunc, "goodFunc should throw Exception");
 }
 
+TEST_CASE(FuncGood, AnyThrow) {
+	ASSERT_ANY_THROW(goodFunc, "goodFunc should throw Exception");
+}
+
 TEST_CASE(FuncBad, DoesNotThrow) {
 	ASSERT_NO_THROW(badFunc, "badFunc should not throw");
 }
@@ -24,4 +28,8 @@ TEST_CASE(FuncBad, ThrowsLogicError) {
 
 TEST_CASE(FuncBad, ThrowsRuntimeError) {
 	ASSERT_THROW(std::runtime_error, badFunc, "badFunc should throw Runtime error");
+}
+
+TEST_CASE(FuncBad, AnyThrow) {
+	ASSERT_ANY_THROW(badFunc, "badFunc should throw");
 }

@@ -15,6 +15,7 @@ namespace Test {
 #define ASSERT_ITERABLE_EQUAL(first1, last1, first2, last2, msg) ASSERT_ITERABLE_EQUAL_IMPL(first1, last1, first2, last2, msg)
 #define ASSERT_THROW(exceptionType, function, msg) ASSERT_THROW_IMPL(exceptionType, function, msg)
 #define ASSERT_NO_THROW(function, msg) ASSERT_NO_THROW_IMPL(function, msg)
+#define ASSERT_ANY_THROW(function, msg) ASSERT_ANY_THROW_IMPL(function, msg)
 
 template <typename T>
 std::string toString(T&& t);
@@ -81,7 +82,7 @@ std::string toString(T&& t);
 		} catch (const exceptionType##& e) { \
 			break; \
 		} catch (...) { \
-			throw Test::TestFailedException(std::string("another exception was thrown, ") + \
+			throw Test::TestFailedException(std::string("another type of exception was thrown, ") + \
 											(msg), __FILE__, __LINE__); \
 		} \
 		throw Test::TestFailedException(std::string("expected exception was not thrown, ") + \
@@ -94,10 +95,22 @@ std::string toString(T&& t);
 		try { \
 			_func(); \
 		} catch (...) { \
-			throw Test::TestFailedException(std::string("an expected was thrown, ") + \
+			throw Test::TestFailedException(std::string("exception was thrown, ") + \
 											(msg), __FILE__, __LINE__); \
 		} \
 	} while (false) 
+
+#define ASSERT_ANY_THROW_IMPL(function, msg) \
+	do { \
+		auto&& _func = (function); \
+		try { \
+			_func(); \
+		} catch (...) { \
+			break; \
+		} \
+		throw Test::TestFailedException(std::string("exception was not thrown, ") + \
+											(msg), __FILE__, __LINE__); \
+	} while (false)
 
 template <typename T>
 std::string toString(T&& t) {
