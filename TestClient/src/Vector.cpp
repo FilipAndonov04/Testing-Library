@@ -5,12 +5,12 @@
 
 TEST_CASE(Vector, ElementsSum) {
 	std::vector<int> v;
-	for (int i = 0; i < 100000; i++) {
+	for (size_t i = 0; i < 100000; i++) {
 		v.push_back(i + 1);
 	}
 
 	unsigned long long sum = 0;
-	for (int i = 0; i < v.size(); i++) {
+	for (size_t i = 0; i < v.size(); i++) {
 		sum += v[i];
 	}
 
@@ -20,12 +20,12 @@ TEST_CASE(Vector, ElementsSum) {
 
 TEST_CASE(Vector, ElementsAvarage) {
 	std::vector<int> v;
-	for (int i = 0; i < 100000; i++) {
+	for (size_t i = 0; i < 100000; i++) {
 		v.push_back(i + 1);
 	}
 
 	unsigned long long sum = 0;
-	for (int i = 0; i < v.size(); i++) {
+	for (size_t i = 0; i < v.size(); i++) {
 		sum += v[i];
 	}
 

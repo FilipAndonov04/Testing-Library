@@ -4,15 +4,14 @@
 TEST_CASE(Ptr, NotNull) {
 	int* ptr = nullptr;
 
-	ASSERT_NULL(ptr, "ptr must not be null");
+	ASSERT_NULL(ptr, "ptr must be null");
 }
 
 TEST_CASE(Ptr, Null) {
-	int* ptr = new int(67);
+	int i = 67;
+	int* ptr = &i;
 
 	ASSERT_NOT_NULL(ptr, "ptr must not be null");
-
-	delete ptr;
 }
 
 TEST_MAIN() {
