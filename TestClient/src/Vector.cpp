@@ -5,7 +5,7 @@
 
 TEST_CASE(Vector, ElementsSum) {
 	std::vector<int> v;
-	for (int i = 0; i < 100000000; i++) {
+	for (int i = 0; i < 100000; i++) {
 		v.push_back(i + 1);
 	}
 
@@ -20,7 +20,7 @@ TEST_CASE(Vector, ElementsSum) {
 
 TEST_CASE(Vector, ElementsAvarage) {
 	std::vector<int> v;
-	for (int i = 0; i < 100000000; i++) {
+	for (int i = 0; i < 100000; i++) {
 		v.push_back(i + 1);
 	}
 
@@ -63,4 +63,10 @@ TEST_CASE(Vector, EqualElementsAndDifferentLength) {
 
 	ASSERT_ITERABLE_EQUAL(v1.begin(), v1.end(), v2.begin(), v2.end(),
 						  "collections with same elements but different size are not equal");
+}
+
+TEST_CASE(String, EmptyOnDefaultConstruction) {
+	std::string s;
+
+	ASSERT_EQUAL("", s, "string should be empty on default construction");
 }

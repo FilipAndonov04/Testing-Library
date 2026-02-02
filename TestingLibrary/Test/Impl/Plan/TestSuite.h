@@ -8,19 +8,19 @@ namespace Test {
 class TestSuite {
 public:
 	explicit TestSuite(const char* name);
-	TestSuite(const char* name, TestCase testCase);
 
 	const char* getName() const;
 	unsigned totalTests() const;
-	const std::vector<TestCase>& getTestCases() const;
-	std::vector<TestCase>& getTestCases();
 
-	void addTestCase(TestCase testCase);
+	const TestCase* getTestCase(const char* caseName) const;
+	TestCase* getTestCase(const char* caseName);
 
-	unsigned runTests() const;
+	void addTestCase(const char* caseName, void(*caseImpl)());
+	
+	unsigned run() const;
 
 private:
-	unsigned runTestsImpl() const;
+	unsigned runTests() const;
 
 	const char* name;
 	std::vector<TestCase> cases;

@@ -4,14 +4,25 @@
 
 namespace Test {
 
-void TestPlan::addTestCase(const char* suiteName, TestCase testCase) {
+void TestPlan::addTestCase(const char* suiteName, const char* caseName, void(*caseImpl)()) {
     for (auto& suite : suites) {
         if (suite.getName() == suiteName) {
-            suite.addTestCase(std::move(testCase));
+            suite.addTestCase(caseName, caseImpl);
             return;
         }
     }
-    suites.emplace_back(suiteName, std::move(testCase));
+
+    suites.emplace_back(suiteName);
+    suites.back().addTestCase(caseName, caseImpl);
+}
+
+const TestSuite* TestPlan::getTestSuite(const char* suiteName) const {
+    for (auto& suite : suites) {
+        if (suite.getName() == suiteName) {
+            return &suite;
+        }
+    }
+    return nullptr;
 }
 
 TestSuite* TestPlan::getTestSuite(const char* suiteName) {
@@ -23,29 +34,22 @@ TestSuite* TestPlan::getTestSuite(const char* suiteName) {
     return nullptr;
 }
 
+const TestCase* TestPlan::getTestCase(const char* suiteName, const char* caseName) const {
+    const TestSuite* suite = getTestSuite(suiteName);
+    if (!suite) {
+        return nullptr;
+    }
+
+    return suite->getTestCase(caseName);
+}
+
 TestCase* TestPlan::getTestCase(const char* suiteName, const char* caseName) {
     TestSuite* suite = getTestSuite(suiteName);
     if (!suite) {
         return nullptr;
     }
 
-    for (auto& c : suite->getTestCases()) {
-        if (c.getName() == caseName) {
-            return &c;
-        }
-    }
-    return nullptr;
-}
-
-TestCase* TestPlan::getTestCase(const char* caseName) {
-    for (auto& suite : suites) {
-        for (auto& c : suite.getTestCases()) {
-            if (strcmp(c.getName(), caseName) == 0) {
-                return &c;
-            }
-        }
-    }
-    return nullptr;
+    return suite->getTestCase(caseName);
 }
 
 unsigned TestPlan::totalTests() const {
@@ -56,16 +60,16 @@ unsigned TestPlan::totalTests() const {
     return total;
 }
 
-unsigned TestPlan::runTests() const {
+unsigned TestPlan::run() const {
     logTabbed("[ALL TESTS] tests are running\n");
-
     incrementLogTabs();
-    TestTimer timer;
-    unsigned passed = runTestsImpl();
-    auto duration = timer.getTimePassedMs();
-    decrementLogTabs();
 
+    TestTimer timer;
+    unsigned passed = runTests();
+    auto duration = timer.getTimePassedMs();
     unsigned total = totalTests();
+
+    decrementLogTabs();
     setConsoleColour(passed == total ? ConsoleColour::Green : ConsoleColour::Red);
     logTabbed("[ALL TESTS] tests passed %u/%u (%ums)\n", 
               passed, total, duration);
@@ -74,10 +78,10 @@ unsigned TestPlan::runTests() const {
     return passed;
 }
 
-unsigned TestPlan::runTestsImpl() const {
+unsigned TestPlan::runTests() const {
     unsigned passed = 0;
     for (const auto& suite : suites) {
-        passed += suite.runTests();
+        passed += suite.run();
     }
     return passed;
 }

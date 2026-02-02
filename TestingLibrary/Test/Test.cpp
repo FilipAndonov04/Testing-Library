@@ -8,7 +8,7 @@ namespace Test {
 static bool allTestsPassed = true;
 
 bool runAllTests() {
-	unsigned passed = getTestRegister().runTests();
+	unsigned passed = getTestRegister().run();
 	log("\n");
 
 	unsigned total = getTestRegister().totalTests();
@@ -27,7 +27,7 @@ bool runSuiteTests(const char* testSuite) {
 		return false;
 	}
 
-	unsigned passed = s->runTests();
+	unsigned passed = s->run();
 	log("\n");
 
 	unsigned total = s->totalTests();
@@ -41,23 +41,6 @@ bool runTestCase(const char* testSuite, const char* testCase) {
 		setConsoleColour(ConsoleColour::Red);
 		log("[ERROR] test suite %s does not contain test case %s\n\n",
 			testSuite, testCase);
-		setConsoleColour(ConsoleColour::Default);
-
-		allTestsPassed = false;
-		return false;
-	}
-
-	allTestsPassed &= c->run();
-	log("\n");
-
-	return allTestsPassed;
-}
-
-bool runTestCase(const char* testCase) {
-	TestCase* c = getTestRegister().getTestCase(testCase);
-	if (!c) {
-		setConsoleColour(ConsoleColour::Red);
-		log("[ERROR] test case %s does not exist\n\n", testCase);
 		setConsoleColour(ConsoleColour::Default);
 
 		allTestsPassed = false;

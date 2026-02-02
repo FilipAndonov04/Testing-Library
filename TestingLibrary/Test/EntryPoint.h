@@ -3,5 +3,4 @@
 
 TEST_MAIN() {
 	Test::runAllTests();
-	Test::runTestCase("SubstringWithValidInterval");
 }

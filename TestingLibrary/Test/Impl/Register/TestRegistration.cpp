@@ -5,7 +5,7 @@
 namespace Test {
 
 TestRegistration::TestRegistration(const char* suiteName, const char* caseName, void(*caseImpl)()) {
-    getTestRegister().addTestCase(suiteName, TestCase{caseName, caseImpl});
+    getTestRegister().addTestCase(suiteName, caseName, caseImpl);
 }
 
 }

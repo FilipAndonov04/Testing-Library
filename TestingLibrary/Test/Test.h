@@ -31,7 +31,6 @@ namespace Test {
 bool runAllTests();
 bool runSuiteTests(const char* testSuite);
 bool runTestCase(const char* testSuite, const char* testCase);
-bool runTestCase(const char* testCase);
 
 bool haveAllTestsPassed();
 
