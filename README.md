@@ -28,6 +28,8 @@ ASSERT_NOT_EQUAL(expected, actual, msg);
 ASSERT_NULL(ptr, msg);
 ASSERT_NOT_NULL(ptr, msg);
 ASSERT_ITERABLE_EQUAL(first1, last1, first2, last2, msg);
+ASSERT_THROWS(exceptionType, function, msg);
+ASSERT_DOES_NOT_THROW(function, msg);
 ```
 
 ## Entry Point
