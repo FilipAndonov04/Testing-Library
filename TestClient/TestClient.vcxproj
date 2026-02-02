@@ -140,6 +140,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Exception.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\StringTest.cpp" />
     <ClCompile Include="src\Vector.cpp" />

@@ -17,7 +17,7 @@ namespace Test {
 			throw Test::TestFailedException("an unexpected exception occurred", __FILE__, __LINE__); \
 		} \
 	} \
-	static Test::TestRegistration testRegistration##name(#suite, #name, &test##suite##name##_structure); \
+	static Test::TestRegistration testRegistration##suite##name(#suite, #name, &test##suite##name##_structure); \
 	void test##suite##name()
 
 #define TEST_MAIN() \

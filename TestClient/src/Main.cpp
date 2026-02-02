@@ -16,6 +16,6 @@ TEST_CASE(Ptr, Null) {
 
 TEST_MAIN() {
 	Test::runAllTests();
-	Test::runSuiteTests("Ptr");
-	Test::runTestCase("Vector", "Palindrome");
+	Test::runSuiteTests("FuncGood");
+	Test::runSuiteTests("FuncBad");
 }
