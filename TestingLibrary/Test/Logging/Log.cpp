@@ -26,13 +26,13 @@ void setConsoleColour(ConsoleColour colour) {
 	const char* colourCode;
 	switch (colour) {
 	case ConsoleColour::Green:
-		colourCode = COLOUR_GREEN;
+		colourCode = ANSI_COLOUR_GREEN;
 		break;
 	case ConsoleColour::Red:
-		colourCode = COLOUR_RED;
+		colourCode = ANSI_COLOUR_RED;
 		break;
 	default:
-		colourCode = COLOUR_DEFAULT;
+		colourCode = ANSI_COLOUR_DEFAULT;
 		break;
 	}
 

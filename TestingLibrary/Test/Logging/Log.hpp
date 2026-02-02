@@ -22,9 +22,9 @@ inline void logTabbed(const char* fmt, const Ts&... ts) {
 	log(fmt, ts...);
 }
 
-constexpr const char* COLOUR_DEFAULT = "\x1B[39m";
-constexpr const char* COLOUR_GREEN = "\x1B[32m";
-constexpr const char* COLOUR_RED = "\x1B[31m";
+constexpr const char* ANSI_COLOUR_DEFAULT = "\x1B[39m";
+constexpr const char* ANSI_COLOUR_GREEN = "\x1B[32m";
+constexpr const char* ANSI_COLOUR_RED = "\x1B[31m";
 
 enum class ConsoleColour {
 	Default,
