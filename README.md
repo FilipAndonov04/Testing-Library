@@ -1,8 +1,8 @@
 # Testing Library
 
-Library for testing code with simple interface.
+Simple C++ Library for writing unit tests. It has an easy to learn and use API for test cases, consisting of definition, assertion and execution.
 
-## Testing
+## Test Cases
 
 Testing is done with test cases. 
 A test case has a name and a suite.
@@ -41,7 +41,6 @@ Functions for running the tests:
 bool Test::runAllTests();
 bool Test::runSuiteTests(const char* testSuite);
 bool Test::runTestCase(const char* testSuite, const char* testCase);
-bool Test::runTestCase(const char* testCase);
 ```
 
 The success of all run tests can be checked with `Test::haveAllTestsPassed()`.
@@ -75,3 +74,6 @@ TEST_CASE(Box, DefaultConstructor) {
     ASSERT_TRUE(box.isEmpty(), "box should be empty on construction");
 }
 ```
+
+## License
+This project is provided for educational purposes.
