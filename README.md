@@ -1,6 +1,6 @@
 # Testing Library
 
-Simple C++ Library for writing unit tests. It has an easy to learn and use API for test cases, consisting of definition, assertion and execution.
+Simple C++ Library for writing unit tests. It has an easy to learn and use API for test cases, consisting of definition, assertion and execution. It is inspired by the test frameworks JUnit and GoogleTest.
 
 ## Test Cases
 
@@ -30,6 +30,7 @@ ASSERT_NOT_NULL(ptr, msg);
 ASSERT_ITERABLE_EQUAL(first1, last1, first2, last2, msg);
 ASSERT_THROWS(exceptionType, function, msg);
 ASSERT_DOES_NOT_THROW(function, msg);
+ASSERT_ANY_THROW(function, msg);
 ```
 
 ## Entry Point
