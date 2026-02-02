@@ -1,8 +1,8 @@
-#include "Box/Box.h"
-
 #include <Test/Test.h>
 #include <Test/Asserts.h>
 #include <Test/EntryPoint.h>
+
+#include "Box/Box.h"
 
 TEST_CASE(Box, EmptyOnConstruction) {
 	Box box;
