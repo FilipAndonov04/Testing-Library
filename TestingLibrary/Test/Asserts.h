@@ -13,8 +13,8 @@ namespace Test {
 #define ASSERT_NULL(ptr, msg) ASSERT_TRUE((ptr) == nullptr, msg)
 #define ASSERT_NOT_NULL(ptr, msg) ASSERT_TRUE((ptr) != nullptr, msg)
 #define ASSERT_ITERABLE_EQUAL(first1, last1, first2, last2, msg) ASSERT_ITERABLE_EQUAL_IMPL(first1, last1, first2, last2, msg)
-#define ASSERT_THROWS(exceptionType, function, msg) ASSERT_THROWS_IMPL(exceptionType, function, msg)
-#define ASSERT_DOES_NOT_THROW(function, msg) ASSERT_DOES_NOT_THROW_IMPL(function, msg)
+#define ASSERT_THROW(exceptionType, function, msg) ASSERT_THROW_IMPL(exceptionType, function, msg)
+#define ASSERT_NO_THROW(function, msg) ASSERT_NO_THROW_IMPL(function, msg)
 
 template <typename T>
 std::string toString(T&& t);
@@ -73,7 +73,7 @@ std::string toString(T&& t);
 		} \
 	} while (false)
 
-#define ASSERT_THROWS_IMPL(exceptionType, function, msg) \
+#define ASSERT_THROW_IMPL(exceptionType, function, msg) \
 	do { \
 		auto&& _func = (function); \
 		try { \
@@ -88,7 +88,7 @@ std::string toString(T&& t);
 											(msg), __FILE__, __LINE__); \
 	} while (false)
 
-#define ASSERT_DOES_NOT_THROW_IMPL(function, msg) \
+#define ASSERT_NO_THROW_IMPL(function, msg) \
 	do { \
 		auto&& _func = (function); \
 		try { \
