@@ -13,7 +13,7 @@ namespace Test {
 #define ASSERT_NULL(ptr, msg) ASSERT_TRUE((ptr) == nullptr, msg)
 #define ASSERT_NOT_NULL(ptr, msg) ASSERT_TRUE((ptr) != nullptr, msg)
 #define ASSERT_ITERABLE_EQUAL(first1, last1, first2, last2, msg) ASSERT_ITERABLE_EQUAL_IMPL(first1, last1, first2, last2, msg)
-#define ASSERT_THROWS(exception, function, msg) ASSERT_THROWS_IMPL(exception, function, msg)
+#define ASSERT_THROWS(exceptionType, function, msg) ASSERT_THROWS_IMPL(exceptionType, function, msg)
 #define ASSERT_DOES_NOT_THROW(function, msg) ASSERT_DOES_NOT_THROW_IMPL(function, msg)
 
 template <typename T>
